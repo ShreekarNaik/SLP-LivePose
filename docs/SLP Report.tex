@@ -9,6 +9,7 @@
 \usepackage[noend]{algpseudocode}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{microtype}
@@ -26,13 +27,38 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
-\title{\textbf{LivePose: Real-Time Multi-Camera 3D Pose Estimation}\\
-\large A Technical Report on Algorithms, Contributions, and Design Evolution}
-\author{Shreekar Naik}
-\date{May 2026}
-
 \begin{document}
-\maketitle
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{1.2cm}
+
+  \IfFileExists{logo.png}{%
+    \includegraphics[width=0.24\textwidth]{logo.png}\\[1.4cm]
+  }{%
+    \IfFileExists{docs/logo.png}{%
+      \includegraphics[width=0.24\textwidth]{docs/logo.png}\\[1.4cm]
+    }{}
+  }
+
+  {\Large Indian Institute of Technology Bombay\\[0.35cm]}
+  {\large Department Project Report\\[1.35cm]}
+
+  {\Huge\bfseries LivePose: Real-Time Multi-Camera 3D Pose Estimation\\[0.45cm]}
+  {\Large A Technical Report on Algorithms, Contributions, and Design Evolution\\[1.4cm]}
+
+  {\large \textit{Shreekar Naik}\\[0.3cm]}
+  {\large \textit{Roll No. 22B4518}\\[0.9cm]}
+
+  {\large Supervisor: Prof. Priyanshu Agarwal\\[1.1cm]}
+
+  {\large GitHub: \href{https://github.com/ShreekarNaik/SLP-LivePose}{github.com/ShreekarNaik/SLP-LivePose}\\[0.35cm]}
+  {\small \href{https://github.com/ShreekarNaik/SLP-LivePose}{Project repository on GitHub}}\\[1.5cm]
+
+  \vfill
+  {\large May 2026}
+\end{center}
+\end{titlepage}
 \tableofcontents
 \newpage
 
@@ -46,6 +72,9 @@ FreeMoCap demonstrated that markerless motion capture is feasible with consumer 
 and open-source pose detectors; however, its architecture is oriented towards
 \emph{offline} batch processing of pre-recorded video sessions. LivePose extends this
 paradigm in two important directions:
+
+\noindent The project repository is available at \url{https://github.com/ShreekarNaik/SLP-LivePose},
+and the README in that repository includes the demo videos and run guide for the system.
 
 \begin{enumerate}
   \item \textbf{Live-first streaming}: The pipeline is designed around a continuous

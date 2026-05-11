@@ -61,3 +61,7 @@ ui/.vite/
 data/mpi_inf_3dhp/
 data/mpi_inf_3dhp_downscaled/
 screenshots/
+SLP Report.fls
+SLP Report.aux
+SLP Report.fdb_latexmk
+docs/logo.png
