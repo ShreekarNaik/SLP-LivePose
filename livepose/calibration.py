@@ -76,7 +76,9 @@ def detect_charuco(
     gray = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2GRAY) if image_bgr.ndim == 3 else image_bgr
     detector = cv2.aruco.CharucoDetector(board)
     charuco_corners, charuco_ids, _, _ = detector.detectBoard(gray)
-    if charuco_corners is None or charuco_ids is None or len(charuco_ids) < 4:
+    # Need a minimum number of detected corners for reliable pose estimation.
+    # Use 6 as a conservative lower bound for DLT-style methods.
+    if charuco_corners is None or charuco_ids is None or len(charuco_ids) < 6:
         return None, None
     return charuco_corners, charuco_ids
 
@@ -90,9 +92,12 @@ def estimate_board_pose(
 ) -> Optional[tuple[np.ndarray, np.ndarray]]:
     """Estimate the board's pose in camera frame. Returns (R, t) in meters or None."""
     obj_points, img_points = board.matchImagePoints(charuco_corners, charuco_ids)
-    if obj_points is None or len(obj_points) < 4:
+    # Require at least 6 matched 3D-2D correspondences for robust DLT-based pose estimation.
+    if obj_points is None or len(obj_points) < 6:
         return None
-    success, rvec, tvec = cv2.solvePnP(obj_points, img_points, K, dist)
+    # Explicitly request the iterative solver for stability; some internal algorithms
+    # (DLT/DLS) expect >=6 points and will error out with fewer.
+    success, rvec, tvec = cv2.solvePnP(obj_points, img_points, K, dist, flags=cv2.SOLVEPNP_ITERATIVE)
     if not success:
         return None
     R, _ = cv2.Rodrigues(rvec)

@@ -8,6 +8,11 @@ LivePose is a real-time multi-camera pose estimation app with 2D overlays, 3D vi
 
 Click the preview above to watch the demo video.
 
+Private live video request/access demo:
+
+- Link: https://youtu.be/x0wtxJh0xg8
+- Note: This video is private. Please request access to view it.
+
 ## Requirements
 
 - Python 3.11+
