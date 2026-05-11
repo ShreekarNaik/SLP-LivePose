@@ -1,0 +1,63 @@
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.Python
+.venv/
+venv/
+env/
+.env
+.env.*
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+.eggs/
+*.egg-info/
+build/
+dist/
+pip-wheel-metadata/
+
+# Frontend / Node
+*/node_modules/
+ui/dist/
+ui/.vite/
+*.tsbuildinfo
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Large model and inference artifacts
+*.pt
+*.onnx
+*.tflite
+*.engine
+*.weights
+
+# Common large media outputs
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.gif
+
+# Generated datasets and derived assets
+data/mpi_inf_3dhp/
+data/mpi_inf_3dhp_downscaled/
+screenshots/

@@ -1,0 +1,21 @@
+# Dependencies and package manager state
+node_modules/
+
+# Build and preview output
+dist/
+.vite/
+
+# TypeScript incremental build state
+*.tsbuildinfo
+
+# Test and coverage output
+coverage/
+playwright-report/
+test-results/
+
+# Tooling caches
+.cache/
+.parcel-cache/
+.turbo/
+.storybook/
+storybook-static/
